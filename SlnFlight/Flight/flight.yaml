@@ -10,14 +10,8 @@ variables:
   buildConfiguration : 'Release'
 
 steps : 
-      - task : DotNetCoreCLI@2
-      displayName : Restore
-      inputs : 
-           command : restore
-           projects : '**/*.csproj'
-
-	-task : DotNetCoreCLI@2
-	 displayname : Build
-		inputs : build
-		projects : '**/*.csproj'
-		arguments : '--configuration $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    feedsToUse: 'select'
